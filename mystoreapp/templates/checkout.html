@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
+
+{% block main %}
+    <section>  
+        <div class="container">
+            <div class="row margintop justify-content-center">
+                <div class = "col-12 text-center">
+                    <h1 style="margin-top: 60px;">Checkout</h1>
+                    <p>
+                        Thank you for your interest! <br>
+                    Please provide your details so that one of our awesome staffs can contact you to finalise details and take payment.
+                    Thank you!</br>
+                    </p>
+                </div>
+            </div>
+            <div class="row my-4 justify-content-center">
+                <div class = "col-6">
+                    {{ render_form(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

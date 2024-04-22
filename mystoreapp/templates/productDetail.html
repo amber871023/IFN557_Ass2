@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- Contains the main content of the website, divided into sections -->
+<section>
+  <nav aria-label="breadcrumb" class="container breadtop">
+    <ol class="breadcrumb bg-white fs-5">
+      <li class="breadcrumb-item"><a href="{{ url_for('main.getAllProduct', _anchor='products_anchor') }}"
+          class="text-dark">Home</a></li>
+      <li class="breadcrumb-item text-main active">Brands</a></li>
+    </ol>
+    <div class="border-bottom my-2"></div>
+  </nav>
+</section>
+<section>
+  {% for product in products %}
+  <!--Product detail-->
+  <div class="container margin">
+    <div class="row flex-row align-items-center">
+      <!-- product image -->
+      <div class="col-12 col-md-6 mb-4">
+        <img src="{{ url_for('static', filename='img/'+ product.image) }}" class="d-block w-100" alt="...">
+      </div>
+
+      <!-- product intro-->
+      <div class="col-12 col-md-6">
+        <h2 class="font-weight-bold">{{product.name}}</h2>
+        <div class="border-bottom"></div>
+        <h6 class="text-secondary mt-2">{{product.subname}}</h6>
+        <p>{{product.description}}</p>
+        <p class="h5 font-weight-normal mb-2"></p> {{ "$%.2f"|format(product.price) }}</p>
+        <div class="chooseSize mb-2">
+          <p class="mb-1">Size:</p>
+            <button type="button" class="btn btn-outline-dark active mr-4">{{product.size}}</button>
+            <form action="{{ url_for('main.order') }}">
+              <input type="hidden" id="product_id" name="product_id" value="{{ product.id }}">
+              <button class="btn btn-main btn-block fs-5 mt-3" type="submit" value="Add to Basket" style="height: 48px;">Add to
+                Basket</button>
+            </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!--Notice-->
+    <div class="container row mb-5 px-0 mx-0">
+      <div class="col-12 px-0">
+        <div class="border-bottom my-3"></div>
+        <h6 class="font-weight-bold">Product purchase instructions</h6>
+        <p class="mb-3">The color of the product may vary slightly due to shooting, and the actual product is mainly
+          shipped
+          by the
+          manufacturer. The photo of the product situation is for illustrative purposes only, only the main body of the
+          product
+          does not include other accessories, please refer to the specification content. MY PERFUME does its best to
+          ensure
+          that
+          the listed items are fully stocked, but occasionally a product may be sold out. If the item you ordered is out
+          of
+          stock,
+          we will notify you by email as soon as possible. Any order changes will be updated in the order total and
+          shipping
+          information.</p>
+        <h6 class="font-weight-bold">Return Notice</h6>
+        <p>In accordance with the provisions of the "Consumer Protection Law", all shoppers on the whole site enjoy the
+          [seven-day
+          hesitation period] (including holidays) when the goods arrive. If there is any problem with the product
+          received,
+          you
+          can apply for a return within the hesitation period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,91 @@
+nav-item .nav-link :hover{
+  background-color: #ae6506;
+}
+
+.hero{
+  margin-top: 72.5px;
+  height: auto;
+  width: 100%;
+  background-image: url(/static/img/heroImg.jpeg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.fs-5{
+  font-size: 1.25rem;
+}
+
+ul{
+  list-style-type: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.quote{
+  margin-bottom: 30px;
+}
+.rec-img{
+  height: 50vh;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.position {
+  top: 15px;
+  right: 10px;
+}
+.soldout {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  opacity: 60%;
+}
+
+.contact {
+  display: block;
+  background: no-repeat center url(/static/img/contactImg.webp);
+  background-size: cover;
+  height: 600px;
+  white-space: nowrap;
+}
+.contact input {
+      border: 2px solid #ae6506;
+      height: auto;
+}
+
+.text-main {
+  color: #ae6e06 !important;
+}
+
+.btn-main {
+  color: #fff !important;
+  background-color: #ae6e06 !important;
+  border-color: #ae6e06 !important;
+}
+
+.brands {
+  margin-top: 72.5px;
+}
+
+.margin {
+  margin-top: 20px;
+}
+
+.breadtop {
+  margin-top: 100px;
+}
+
+.carousel-inner {
+  margin: 0 auto;
+  height: 450px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+

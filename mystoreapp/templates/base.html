@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="My Perfume App">
+    <title>MY Perfume</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'all.css') }}">
+    <!-- Bootstrap version 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!--Material icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <!-- putting header inside container will prevent full width navbar -->
+    <header>
+        <!--navbar creates a navigation bar -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #ae6e06;">
+                <div class="container-fluid">
+                    <h1><a class="navbar-brand text-white animate__animated animate__fadeInDown" href="/">MY
+                            PERFUME</a></h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    {% for category in categories %}
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                        <ul class="navbar-nav text-center ">
+                            <li class="nav-item"><a href="{{ url_for('main.getByCategory', categoryid=category.id) }}"
+                                    class="nav-link text-white fs-5 font-weight-bold">{{category.name}}</a>
+                            </li>
+                            {% endfor %}
+                            <li class="nav-item">
+                                <a href="{{ url_for('main.order') }}"
+                                    class="nav-link text-white fs-5 font-weight-bold d-flex justify-content-center align-items-center"><span
+                                        class="material-icons text-white">
+                                        shopping_cart
+                                    </span> <span class="d-block d-md-none">Basket</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        {% block head %}
+
+        {% endblock %}
+
+    </header>
+
+
+    <!-- main page content goes in container -->
+    <div class="container-fluid px-0" style="margin-top: 90px; ">
+        <main>
+            <div class="container px-0">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" aria-label="Close" data-dismiss="alert" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{message}}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+            {% block main %}
+
+            {% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer of the website -->
+    <!-- Contact form -->
+    <section>
+        <div class="container-fluid contact d-flex align-items-center">
+            <div class="container">
+                <form class="row" method="post">
+                    <div class="col-12 col-lg-4">
+                        <h2 class="text-white font-weight-bold mb-3">My Perfume
+                        </h2>
+                        
+                        <div class="col-12 mb-3 pl-0">
+                            <label for="email" class="text-white form-label">My Perfume team acknowledges the Traditional Owners of the lands on which we meet and work, 
+                                <br>both at our offices on Brisbane and our retail locations across Australia. We pay our respects to
+                                <br> Elders- past, present and emerging- and honour their living culture and recognise their ongoing 
+                                <br>connection to this beautiful country. 
+                                <small class="font-weight-bold" data-message="acknowledges"></small></label>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="py-3" style="background-color: #ae6506;">
+        <div class="d-flex justify-content-center">
+            <p class="mb-1 text-white">Copyright &copy; 2023 MY PERFUME</p>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

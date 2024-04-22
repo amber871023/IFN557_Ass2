@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+  <nav aria-label="breadcrumb" class="container breadtop">
+    <ol class="breadcrumb bg-white fs-5">
+      <li class="breadcrumb-item"><a href="{{ url_for('main.getAllProduct', _anchor='products_anchor') }}"
+          class="text-dark">Home</a></li>
+      <li class="breadcrumb-item text-main active">Brands</a></li>
+    </ol>
+  </nav>
+</section>
+<section>
+  <div class="container">
+    <div class="border-bottom my-2"></div>
+    <ul class="row d-flex px-5 my-4">
+      {% for product in products %}
+      <li class="col-6 col-md-4 col-lg-3 position-relative">
+        <a class="text-dark" href="{{ url_for('main.getProduct', productid=product.id) }}">
+          {% if product.status %}
+          <h6 class="bg-dark text-white position-absolute position px-3 py-2">NEW</h6>
+          {% endif %}
+          <img src="{{ url_for('static', filename='img/'+product.image) }}" class="card-img-top" style="height:60%">
+          <button type="button" class="btn btn-dark rounded-0 w-100 py-1 mb-2">
+            <h5>Buy Now</h5>
+          </button>
+          <h6 class="font-weight-bold">{{product.name}}</h6>
+          <small>100ml</small>
+          <h5 class="font-weight-bold"> {{ "$%.2f"|format(product.price) }}</h5>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
