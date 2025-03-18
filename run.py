@@ -6,12 +6,9 @@
 
 from mystoreapp import create_app
 
-# Create the Flask app instance
-app = create_app()
+app = create_app()  # Initialize Flask app
 
-# Vercel requires a `handler` function
-def handler(request, *args, **kwargs):
-    return app(request.environ, start_response)
-
+# This is required for Vercel to handle requests
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()  # Do not use debug=True for production
+
